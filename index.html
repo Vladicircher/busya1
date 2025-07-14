@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Буся — Кошачья Королева</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #fdf7f2;
+      color: #4a3c31;
+      margin: 0;
+      padding: 0;
+      background-image: url('images/paw-background.png');
+      background-repeat: repeat;
+    }
+
+    header {
+      background-color: #b9d8d3;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 5px dotted #9e8c6c;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      background-color: #fff;
+      border-top: 2px solid #ccb8a6;
+      border-bottom: 2px solid #ccb8a6;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #5e4d42;
+      font-weight: bold;
+      padding: 1rem;
+      display: block;
+    }
+
+    nav a:hover {
+      color: #2ba7a2;
+    }
+
+    .framed {
+      border: 4px double #c2a384;
+      background-color: #ffffffd9;
+      margin: 2rem;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .card {
+      width: 300px;
+      overflow: hidden;
+      border-radius: 20px;
+      transition: transform 0.5s ease;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .spin:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .bounce:hover {
+      animation: bounce 0.6s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .paw:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: #fffefc;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .popup-content button {
+      margin-top: 1rem;
+      background: #b9d8d3;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .popup-content button:hover {
+      background: #9dc7c3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f5e8da;
+      border-top: 2px solid #9e8c6c;
+    }
+  </style>
+  <script>
+    function showStory(title, text) {
+      const popup = document.createElement('div');
+      popup.className = 'popup';
+      popup.innerHTML = `
+        <div class="popup-content">
+          <h3>${title}</h3>
+          <p>${text}</p>
+          <button onclick="document.body.removeChild(this.parentElement.parentElement)">Закрыть</button>
+        </div>
+      `;
+      document.body.appendChild(popup);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Буся — Кошачья Королева</h1>
+    <p>Живёт с крокодилами и правит диваном</p>
+  </header>
+
+  <main>
+    <section class="framed">
+      <h2>О Бусе</h2>
+      <p>Бусе 5 лет. Она характерная, немного вредная и совершенно уверена, что этот дом принадлежит ей. В её королевстве — мама, папа, сын и два пса-крокодила: Дарси и Тима.</p>
+    </section>
+
+    <section class="framed gallery">
+      <h2>НА ЧИЛИ НА РАССЛАБОНЕ</h2>
+      <div class="card spin"><img src="images/busya_chill1.jpg" alt="Буся на расслабоне"></div>
+      <div class="card spin"><img src="images/busya_chill2.jpg" alt="Буся дремлет в позе дзен"></div>
+    </section>
+
+    <section class="framed gallery">
+      <h2>Я И КРОКОДИЛЫ</h2>
+      <div class="card bounce"><img src="images/busya_darcy.jpg" alt="Буся и Дарси"></div>
+      <div class="card bounce"><img src="images/busya_tima.jpg" alt="Буся и Тима"></div>
+    </section>
+
+    <section class="framed gallery">
+      <h2>МОИ ДЕЛА!</h2>
+      <div class="card paw"><img src="images/busya_window.jpg" alt="Буся на подоконнике"></div>
+      <div class="card paw"><img src="images/busya_control.jpg" alt="Буся контролирует территорию"></div>
+    </section>
+
+    <section class="framed">
+      <h2>БУСИНЫ СКАЗКИ</h2>
+      <button onclick="showStory('История 1: Я королева', 'Буся села на ноутбук. Я попыталась её сдвинуть. Она посмотрела на меня как на прислугу. Я сдалась.')">История 1</button>
+      <button onclick="showStory('История 2: Завтрак', 'На кухне прозвучало шуршание пакета. Буся прибежала первой. Пакет был пуст. Обида века.')">История 2</button>
+      <button onclick="showStory('История 3: Кот и мышь', 'Купили Бусе игрушечную мышь. Она загнала её под шкаф и ушла спать. Игрушка сдалась без боя.')">История 3</button>
+      <button onclick="showStory('История 4: Лазерное величество', 'Играть с лазерной указкой? Только если я в настроении. И то — по пятницам.')">История 4</button>
+      <button onclick="showStory('История 5: Ванна', 'Открытая ванна — ловушка для людей. Буся сидит, смотрит. Ты идёшь — она уходит. Но ты уже напуган.')">История 5</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Буся и семья. Все лапки защищены.</p>
+  </footer>
+</body>
+</html>
